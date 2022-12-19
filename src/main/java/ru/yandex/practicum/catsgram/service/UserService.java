@@ -51,11 +51,7 @@ public class UserService {
     }
 
     public User findUserByEmail(String email) {
-        if (users.values().stream().filter(u -> email.equals(u.getEmail())).findFirst().isPresent()) {
-            return users.values().stream().filter(u -> email.equals(u.getEmail())).findFirst().get();
-        } else {
-            return null;
-        }
+        return users.get(email);
     }
 
 }
