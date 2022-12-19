@@ -23,9 +23,14 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public List<Post> findAll() {
-        log.debug("Текущее количество постов: {}", postService.findAll().size());
-        return postService.findAll();
+    public List<Post> findAll(@RequestParam(defaultValue = "asc") String sort,
+                              @RequestParam(defaultValue = "1") int page,
+                              @RequestParam(defaultValue = "10") int size) {
+        if (size <= 0) {
+            return null;
+        }
+
+        return postService.findAll(size, sort, size * (page - 1));
     }
 
     @PostMapping("/post")
