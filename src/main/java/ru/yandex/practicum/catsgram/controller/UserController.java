@@ -13,6 +13,7 @@ import ru.yandex.practicum.catsgram.service.UserService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @Slf4j
@@ -39,5 +40,11 @@ public class UserController {
     @PutMapping
     public void changeUser(@RequestBody User user) {
         userService.changeUser(user);
+    }
+
+    @GetMapping(value = "/{id}")
+    Optional<User> getUsersById(@PathVariable("id") String email) {
+        log.debug("Количество пользователей в текущий момент {}", userService.getUsers().values().size());
+        return userService.findUserByEmail(email);
     }
 }

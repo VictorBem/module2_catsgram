@@ -7,6 +7,7 @@ import ru.yandex.practicum.catsgram.customexception.UserAlreadyExistException;
 import ru.yandex.practicum.catsgram.model.User;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -50,8 +51,7 @@ public class UserService {
         //return user;
     }
 
-    public User findUserByEmail(String email) {
-        return users.get(email);
+    public Optional<User> findUserByEmail(String email) {
+        return Optional.of(users.get(email));
     }
-
 }
