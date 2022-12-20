@@ -34,7 +34,7 @@ public class PostFeedController {
         if(friendsParams != null){
             List<Post> result = new ArrayList<>();
             for (String friend : friendsParams.getFriends()) {
-                //result.addAll(postService.findAllByUserEmail(friend, friendsParams.getSize(), friendsParams.getSort()));
+                result.addAll(postService.findAllByUserEmail(friend, friendsParams.getSize(), friendsParams.getSort()));
             }
             return result;
         } else {
